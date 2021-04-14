@@ -39,7 +39,8 @@ module.exports = {
               "passcode", "geth", "rpc", "rpcmsg","stdev",  "stochasm", "aggregator",
               "whitelist", "ethereum", "npx", "testrpc", "solc", "whitelisted",
               "unlockable", "openzeppelin", "checksum", "unstakes", "txfee",
-              "relayer", "gsn", 'struct',
+              "relayer", "gsn", 'struct', "mainnet", "keystore", "Ethereumjs",
+              "ethereumjs", "hdwallet", "keyfile", "priv",
 
               // shorthand
               "eth", "args", "util", "utils", "msg", "prev", "bal",
