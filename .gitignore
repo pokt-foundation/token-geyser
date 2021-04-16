@@ -62,6 +62,9 @@ fabric.properties
 # NodeJS dependencies
 node_modules/*
 
+# Env Variables
+.env
+
 # ES-Lint
 .eslintcache
 
