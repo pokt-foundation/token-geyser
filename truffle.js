@@ -2,6 +2,12 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const connectionConfig = require('frg-ethereum-runners/config/network_config.json');
 require('dotenv').config();
 
+const MAINNET_GAS_PRICE = 35000000000;
+const MAINNET_RPC_URL = 'https://eth-mainnet.gateway.pokt.network/v1/<APP_ID>';
+
+const RINKEBY_GAS_PRICE = 2000000000;
+const RINKEBY_RPC_URL = 'https://eth-rinkeby.gateway.pokt.network/v1/<APP_ID>';
+
 module.exports = {
   networks: {
     ganacheUnitTest: connectionConfig.ganacheUnitTest,
@@ -13,9 +19,9 @@ module.exports = {
       provider: () => {
         return new HDWalletProvider(
           [process.env.PRIVATE_KEY],
-          'https://eth-mainnet.gateway.pokt.network/v1/<APP_ID>');
+          MAINNET_RPC_URL);
       },
-      gasPrice: 35000000000
+      gasPrice: MAINNET_GAS_PRICE
     },
     rinkeby: {
       ref: 'rinkeby-test',
@@ -23,9 +29,9 @@ module.exports = {
       provider: () => {
         return new HDWalletProvider(
           [process.env.PRIVATE_KEY],
-          'https://eth-rinkeby.gateway.pokt.network/v1/<APP_ID>');
+          RINKEBY_RPC_URL);
       },
-      gasPrice: 2000000000
+      gasPrice: RINKEBY_GAS_PRICE
     }
   },
   mocha: {
