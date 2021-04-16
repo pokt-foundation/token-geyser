@@ -23,7 +23,7 @@ module.exports = {
       provider: () => {
         return new HDWalletProvider(
           [process.env.PRIVATE_KEY],
-          'https://eth-rinkeby.gateway.pokt.network/v1/605bbf05e1261e00308bfb23');
+          'https://eth-rinkeby.gateway.pokt.network/v1/<APP_ID>');
       },
       gasPrice: 2000000000
     }
