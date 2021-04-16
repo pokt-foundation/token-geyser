@@ -1,22 +1,6 @@
+const HDWalletProvider = require('truffle-hdwallet-provider');
 const connectionConfig = require('frg-ethereum-runners/config/network_config.json');
-
-const mainnetUrl = 'https://mainnet.infura.io/v3/2521699167dc43c8b4c15f07860c208a';
-
-function keystoreProvider (providerURL) {
-  const fs = require('fs');
-  const EthereumjsWallet = require('ethereumjs-wallet');
-  const HDWalletProvider = require('truffle-hdwallet-provider');
-
-  const KEYFILE = process.env.KEYFILE;
-  const PASSPHRASE = (process.env.PASSPHRASE || '');
-  if (!KEYFILE) {
-    throw new Error('Expected environment variable KEYFILE with path to ethereum wallet keyfile');
-  }
-
-  const KEYSTORE = JSON.parse(fs.readFileSync(KEYFILE));
-  const wallet = EthereumjsWallet.fromV3(KEYSTORE, PASSPHRASE);
-  return new HDWalletProvider(wallet._privKey.toString('hex'), providerURL);
-}
+require('dotenv').config();
 
 module.exports = {
   networks: {
@@ -26,8 +10,22 @@ module.exports = {
     mainnet: {
       ref: 'mainnet-prod',
       network_id: 1,
-      provider: () => keystoreProvider(mainnetUrl),
+      provider: () => {
+        return new HDWalletProvider(
+          [process.env.PRIVATE_KEY],
+          'https://eth-mainnet.gateway.pokt.network/v1/<APP_ID>');
+      },
       gasPrice: 35000000000
+    },
+    rinkeby: {
+      ref: 'rinkeby-test',
+      network_id: 4,
+      provider: () => {
+        return new HDWalletProvider(
+          [process.env.PRIVATE_KEY],
+          'https://eth-rinkeby.gateway.pokt.network/v1/605bbf05e1261e00308bfb23');
+      },
+      gasPrice: 2000000000
     }
   },
   mocha: {
