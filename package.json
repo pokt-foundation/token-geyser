@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@openzeppelin/cli": "^2.6.0",
-    "truffle": "5.0.13",
+    "truffle": "5.3.0",
     "truffle-hdwallet-provider": "^1.0.17",
     "@openzeppelin/gsn-provider": "^0.1.9",
     "@openzeppelin/test-environment": "^0.1.2",
